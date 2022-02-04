@@ -1,0 +1,116 @@
+:root {
+  font-family: system-ui;
+}
+
+body {
+  max-width: 70ch;
+  padding: 1em;
+  margin: 0 auto;
+}
+
+.button {
+  display: inline-block;
+  padding: 5px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid;
+  border-radius: 6px;
+  appearance: none;
+}
+
+.button:hover {
+  background-color: rgb(127 127 127 / 0.05);
+}
+
+.reveal-answers:focus ~ .submit,
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(9 105 218 / 0.3);
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+}
+
+#\$form {
+  font-size: 1.5rem;
+  margin-top: 10vh;
+}
+
+/* Quiz logic and styles */
+form {
+  display: grid;
+  gap: 1ch;
+
+  counter-reset: correct;
+  counter-reset: questions;
+}
+
+form fieldset {
+  counter-reset: question;
+  counter-increment: questions 1 correct 0;
+}
+
+form output.score {
+  visibility: hidden;
+  grid-area: 2;
+}
+
+form output.score::after {
+  content: counter(correct) " / " counter(questions);
+  user-select: auto;
+}
+
+.reveal-answers:checked ~ output.score {
+  visibility: visible;
+}
+
+.reveal-answers:checked ~ fieldset :where(input, label) {
+  pointer-events: none;
+}
+
+.reveal-answers:checked ~ .submit {
+  display: none;
+}
+
+.reveal-answers:checked ~ fieldset .correct {
+  background-color: #cfc;
+}
+
+.reveal-answers:checked ~ fieldset input:checked + .correct {
+  font-weight: 500;
+  counter-increment: correct;
+}
+
+.reveal-answers:checked ~ fieldset input:checked + :not(.correct) {
+  background-color: #f88;
+}
+
+/* Fill in the bubble style */
+input[type="radio"] {
+  appearance: none;
+  border-radius: 100px;
+  
+  width: 2em;
+  height: 1em;
+  padding: 8px;
+  border: 1px solid #666;
+
+  display: inline-flex;
+  place-items: center;
+  place-content: center;
+}
+
+input[type="radio"]:checked {
+  font-weight: bold;
+  background-color: rgb(127 127 127 / 0.25);
+}
+
+input[type="radio"]::after {
+  counter-increment: question;
+  content: counter(question, upper-alpha);
+}
