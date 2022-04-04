@@ -67,9 +67,15 @@ const Quiz = ({ name, desc, questions }) => html`
 $form.onsubmit = async (e) => {
   e.preventDefault();
 
+  // use a timeout so it feels nicer with a good connection but still shows up on slower connections to indicate it's doing something.
+  const handle = setTimeout(() => document.body.classList.add("loading"), 236);
+
   const formdata = new FormData($form);
   const params = Object.fromEntries(formdata.entries());
   const questions = await opentdb({ ...params, amount: 5 });
+
+  document.body.classList.remove("loading");
+  clearTimeout(handle);
 
   $form.replaceWith(
     Quiz({

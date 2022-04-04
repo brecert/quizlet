@@ -8,6 +8,28 @@ body {
   margin: 0 auto;
 }
 
+@keyframes Ellipse {
+  33% { content: ".." }
+  66% { content: "..." }
+}
+
+.status {
+  visibility: hidden;
+}
+
+.status::after {
+  content: ".";
+  animation: Ellipse 3s infinite;
+}
+
+body.loading .status {
+  visibility: visible;
+}
+
+body.loading input[type=submit] {
+  display: none;
+}
+
 .button {
   display: inline-block;
   padding: 5px 16px;
