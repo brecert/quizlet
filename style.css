@@ -94,7 +94,7 @@ form output.score::after {
 input[type="radio"] {
   appearance: none;
   border-radius: 100px;
-  
+
   width: 2em;
   height: 1em;
   padding: 8px;
