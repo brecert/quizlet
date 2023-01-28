@@ -10,9 +10,9 @@ export function h(tag, attrs, ...children) {
 
     if (attrs) for (let name in attrs) {
       const value = attrs[name]
-      name.startsWith('data-') || name.startsWith('aria-') || name === 'class' || !(name in $node)
-        ? $node.setAttribute(name, value)
-        : $node[name] = value;
+      name in $node
+        ? $node[name] = value
+        : $node.setAttribute(name, value);
     }
   } else {
     $node = document.createDocumentFragment()
