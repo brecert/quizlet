@@ -1,5 +1,9 @@
-import html from "https://cdn.skypack.dev/pin/solid-js@v1.3.13-G1A7k22W8nCUBdAahFoq/mode=imports,min/optimized/solid-js/html.js";
-import { uri } from "https://cdn.skypack.dev/pin/mouri@v2.0.0-w0BkwzwMyU7YopOIYXsH/mode=imports,min/optimized/mouri.js";
+import htm from "https://esm.sh/v104/htm@3.1.1/es2022/mini/index.module.js";
+import { uri } from "https://esm.sh/v104/mouri@2.0.0/es2022/mouri.js";
+
+import { h } from './html.js'
+
+const html = htm.bind(h);
 
 const cls = (names) => names.filter((n) => n).join(" ");
 
@@ -21,11 +25,7 @@ const Answer = ({ answer, correct = false }, { que, ans }) => {
   return html`
     <div>
       <input id=${id} type="radio" name=${`question-${que}`} required />
-      <label
-        for=${id}
-        class=${cls([correct && `correct`])}
-        innerHTML=${answer}
-      />
+      <label for=${id} class=${cls([correct && `correct`])} innerHTML=${answer} />
     </div>
   `;
 };
@@ -55,9 +55,7 @@ const Quiz = ({ name, desc, questions }) => html`
       role="button"
       for=${`${name}-reveal-answers`}
       tabindex="0"
-      onkeydown=${(e) =>
-        (e.key === " " || e.key === "Enter") && e.target.click()}
-    >
+      onkeydown=${(e) => { (e.key === " " || e.key === "Enter") && e.target.click() }}>
       Submit
     </label>
     <output class="score">Score: </output>
