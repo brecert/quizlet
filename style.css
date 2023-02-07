@@ -32,19 +32,21 @@ body.loading input[type=submit] {
 
 .button {
   display: inline-block;
-  padding: 5px 16px;
+  padding: 8px 16px;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
   cursor: pointer;
   user-select: none;
-  border: 1px solid;
-  border-radius: 6px;
   appearance: none;
 }
 
-.button:hover {
-  background-color: rgb(127 127 127 / 0.05);
+.button, fieldset {
+  border: 2px groove rgba(192, 192, 192, 0.6);
+}
+
+.button:hover, .button:focus {
+  background-color: rgb(127 127 127 / 0.10);
 }
 
 .reveal-answers:focus ~ .submit,
@@ -75,6 +77,7 @@ form {
 form fieldset {
   counter-reset: question;
   counter-increment: questions 1 correct 0;
+  margin: 0;
 }
 
 form output.score {

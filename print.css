@@ -5,6 +5,7 @@
 .score.score {
   visibility: visible;
 }
+
 .reveal-answers:not(:checked) ~ output.score::after {
   content: "__ / " counter(questions);
 }

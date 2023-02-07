@@ -56,7 +56,7 @@ const Quiz = ({ name, desc, questions }) => html`
       for=${`${name}-reveal-answers`}
       tabindex="0"
       onkeydown=${(e) => { (e.key === " " || e.key === "Enter") && e.target.click() }}>
-      Submit
+      Check Answers
     </label>
     <output class="score">Score: </output>
   </form>
