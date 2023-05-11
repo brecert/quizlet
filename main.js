@@ -1,5 +1,5 @@
 import htm from "https://esm.sh/v104/htm@3.1.1/es2022/mini/index.module.js";
-import { uri } from "https://esm.sh/v104/mouri@2.0.0/es2022/mouri.js";
+import { uri } from "https://esm.sh/v104/mouri@2.0.0/es2022/publish/uri.js";
 
 import { h } from './html.js'
 
