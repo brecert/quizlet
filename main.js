@@ -13,7 +13,7 @@ export async function opentdb(options) {
   return results;
 }
 
-// not random but it's good enough
+// not random but it masks the correct answer
 const getAnswers = (question) =>
   [{ answer: question.correct_answer, correct: true }]
     .concat(question.incorrect_answers.map((answer) => ({ answer })))
@@ -61,6 +61,8 @@ const Quiz = ({ name, desc, questions }) => html`
     <output class="score">Score: </output>
   </form>
 `;
+
+const $form = document.querySelector('#form')
 
 $form.onsubmit = async (e) => {
   e.preventDefault();
