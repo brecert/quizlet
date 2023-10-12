@@ -70,8 +70,7 @@ form {
   display: grid;
   gap: 1ch;
 
-  counter-reset: correct;
-  counter-reset: questions;
+  counter-reset: correct questions;
 }
 
 form fieldset {
